@@ -22,8 +22,8 @@ I am not a lawyer, but **no guarantees if this breaks, totally not responsible i
 ## Help Improve This Project!
 
 * **Dependency Management** using [Swift Package Manager](https://swift.org/package-manager/), [Carthage](https://github.com/Carthage/Carthage), or [CocoaPods](https://cocoapods.org/)
-* **Add Generic UIView Handling** - Cards need to be more flexible for developers to input their onwn views.
-* **Add Documentation** - see [Swift Documentation](https://nshipster.com/swift-documentation/)
+* **Add Generic UIView Handling** - Cards need to be more flexible for developers to input custom views.
+* **Add Documentation** - for publc classes/methods.  See [Swift Documentation](https://nshipster.com/swift-documentation/)
 
 ## Prerequisites
 
