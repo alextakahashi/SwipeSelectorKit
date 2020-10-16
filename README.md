@@ -10,14 +10,51 @@ This project was inspired by a few hackathon designs I've seen this year while m
 * **Swipe Right** - *accept*
 * **Swipe Left** - *reject*
 
-## Liability
-I am not a lawyer, but **no guarantees if this breaks, totally not responsible if things go to shit - don't sue me**, kthx.  Add *MIT License*.
-
 ## Getting Started
 
 1. ✅ Fork the Project
 2. ✅ Build + Run 
 3. ✅ Swipe!
+
+## Try it Yourself
+
+```swift
+class SwipeSelectorViewController: UIViewController, SwipeSelectorDelegate {
+    
+    var swipeSelectorView = SwipeSelectorView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        swipeSelectorView = SwipeSelectorView(delegate: self)
+        self.view.addSubview(swipeSelectorView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        swipeSelectorView.frame = self.view.frame
+    }
+    
+    // MARK: SwipeSelectorDelegate
+    
+    func swipeSelectorViewNumberOfItems(_ swipeSelectorView: SwipeSelectorView) -> Int {
+      // DataSource ...
+    }
+    
+    func swipeSelectorViewItemForOverflow(_ swipeSelectorView: SwipeSelectorView) -> SwipeSelectorModel {
+      // DataSource ...
+    }
+    
+    func swipeSelectorView(_ swipeSelectorView: SwipeSelectorView, itemForRowAtIndex: Int) -> SwipeSelectorModel {
+      // Configure Cards ...
+    }
+    
+    func swipeSelectorViewDidSwipe(_ swipeSelectorView: SwipeSelectorView, itemAtIndex: Int, isRightSwipe: Bool) {
+      // Handle Swipes ...
+    }
+}
+
+
+```
 
 ## Help Improve This Project!
 
@@ -36,3 +73,6 @@ I am not a lawyer, but **no guarantees if this breaks, totally not responsible i
 ## Acknowledgments
 
 * [README-Template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
+
+## Liability
+I am not a lawyer, but **no guarantees if this breaks, totally not responsible if things go to shit - don't sue me**, kthx.  Add *MIT License*.
