@@ -1,6 +1,6 @@
 # 👉 SwipeSelectorKit - Hackathon Starter Project
 
-<img src="assets/2020_10_15_SwipeSelectorUIDemo.gif" alt="Swipe Selector Kit Demo" width=""/>
+<img src="assets/2020_10_15_SwipeSelectorUIDemo.gif" alt="Swipe Selector Kit Demo" width="500"/>
 
 > TL;DR Swipe Right, Swipe Left - That's it.  Have a hackthon idea? Fork this and build something cool!
 
