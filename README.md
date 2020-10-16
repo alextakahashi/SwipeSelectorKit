@@ -1,4 +1,4 @@
-# 👉 SwipeSelectorKit - Hackathon Start Project
+# 👉 SwipeSelectorKit - Hackathon Starter Project
 
 <img src="assets/2020_10_15_SwipeSelectorUIDemo.gif" alt="Swipe Selector Kit Demo" width=""/>
 
