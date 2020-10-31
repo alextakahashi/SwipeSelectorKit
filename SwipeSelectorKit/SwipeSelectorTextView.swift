@@ -17,7 +17,8 @@ class BaseTextView: UITextView {
         super.init(frame: frame, textContainer: textContainer)
         self.textAlignment = .left
         self.textContainer.maximumNumberOfLines = 1
-        self.textContainerInset = UIEdgeInsets(top: 0, left: self.layoutMargins.left, bottom: 0, right: self.layoutMargins.right);
+        self.textContainerInset = UIEdgeInsets(top: 0, left: self.layoutMargins.left, bottom: 0, right: self.layoutMargins.right)
+        self.isScrollEnabled = false
     }
     
     required init?(coder: NSCoder) {
