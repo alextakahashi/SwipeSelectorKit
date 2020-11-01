@@ -44,6 +44,7 @@ class SwipeSelectorView: UIView {
     private let duration = 0.25
     private var initialPoint = CGPoint()
     private let panGestureRecognizer = UIPanGestureRecognizer()
+    private let tapGestureRecognizer = UITapGestureRecognizer()
     
     // MARK: View Life Cycle
     
@@ -56,7 +57,8 @@ class SwipeSelectorView: UIView {
         self.addSubview(secondCard)
         self.addSubview(firstCard)
         panGestureRecognizer.addTarget(self, action: #selector(handlePan))
-        firstCard.addGestureRecognizer(panGestureRecognizer)
+        tapGestureRecognizer.addTarget(self, action: #selector(handleTap))
+        updateGestureRecognizer(cardView: firstCard, shouldAddGestureRecognizer: true)
         self.delegate = delegate
         guard delegate.swipeSelectorViewNumberOfItems(self) >= 2 else { return }
         firstCard.configureViewModel(delegate.swipeSelectorView(self, itemForRowAtIndex: 0))
@@ -116,12 +118,16 @@ class SwipeSelectorView: UIView {
         }
     }
     
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        delegate?.swipeSelectorViewDidTap(self, itemAtIndex: self.activeCardIndex)
+    }
+    
     private func animateToInitialPointWithView(_ view: UIView) {
         view.center = self.initialPoint
     }
     
     private func swapCards() {
-        activeCard().removeGestureRecognizer(panGestureRecognizer)
+        updateGestureRecognizer(cardView: activeCard(), shouldAddGestureRecognizer: false)
         activeCardIndex += 1
         guard let delegate = delegate else { return }
         let shouldConfigureNextCard = hiddenCardIndex < delegate.swipeSelectorViewNumberOfItems(self)
@@ -138,11 +144,21 @@ class SwipeSelectorView: UIView {
         }
         showFirstCard = !showFirstCard
         bringSubviewToFront(activeCard())
-        activeCard().addGestureRecognizer(panGestureRecognizer)
+        updateGestureRecognizer(cardView: activeCard(), shouldAddGestureRecognizer: true)
     }
     
     private func activeCard() -> SwipeSelectorCardView {
         return showFirstCard ? firstCard : secondCard
+    }
+    
+    private func updateGestureRecognizer(cardView: SwipeSelectorCardView,  shouldAddGestureRecognizer: Bool) {
+        if (shouldAddGestureRecognizer) {
+            cardView.addGestureRecognizer(panGestureRecognizer)
+            cardView.addGestureRecognizer(tapGestureRecognizer)
+        } else {
+            cardView.removeGestureRecognizer(panGestureRecognizer)
+            cardView.removeGestureRecognizer(tapGestureRecognizer)
+        }
     }
     
 }
