@@ -51,5 +51,14 @@ class SwipeSelectorViewController: UIViewController, SwipeSelectorDelegate {
     func swipeSelectorViewItemForOverflow(_ swipeSelectorView: SwipeSelectorView) -> SwipeSelectorModel {
         return dataSource.overflowItem
     }
+    
+    func swipeSelectorViewDidTap(_ swipeSelectorView: SwipeSelectorView, itemAtIndex: Int) {
+        if (itemAtIndex < dataSource.items.count) {
+            print("Item at Index: \(itemAtIndex)")
+        } else {
+            print("Overflow at Index: \(itemAtIndex)")
+        }
+    }
+
 }
 
